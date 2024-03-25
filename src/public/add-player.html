@@ -1,0 +1,64 @@
+<!-- add-player.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Player</title>
+  </head>
+  <body>
+    <h1>Add Player</h1>
+    <form id="addPlayerForm">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required /><br /><br />
+
+      <label for="role">Role:</label>
+      <input type="text" id="role" name="role" required /><br /><br />
+
+      <label for="dob">Date of Birth:</label>
+      <input type="date" id="dob" name="dob" required /><br /><br />
+
+      <label for="runsScored">Runs Scored:</label>
+      <input type="text" id="runsScored" name="runsScored" /><br /><br />
+
+      <label for="ballsFaced">ballsFaced :</label>
+      <input type="text" id="ballsFaced" name="ballsFaced" /><br /><br />
+
+      <label for="wicketsTaken">wicketsTaken :</label>
+      <input type="text" id="wicketsTaken" name="wicketsTaken" /><br /><br />
+
+      <button type="submit">Add Player</button>
+    </form>
+
+    <script>
+      document
+        .getElementById("addPlayerForm")
+        .addEventListener("submit", async function (event) {
+          event.preventDefault();
+
+          const formData = new FormData(this);
+          const formDataJSON = Object.fromEntries(formData.entries());
+
+          try {
+            const response = await fetch("/players", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(formDataJSON),
+            });
+
+            if (!response.ok) {
+              throw new Error("Failed to add player");
+            }
+
+            alert("Player added successfully");
+            // You can redirect to another page or perform other actions after adding the player
+          } catch (error) {
+            console.error("Error:", error);
+            alert("Failed to add player");
+          }
+        });
+    </script>
+  </body>
+</html>

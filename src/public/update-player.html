@@ -1,0 +1,148 @@
+<!-- Update player details form -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Update Player Details</title>
+  </head>
+  <body>
+    <h1>Update Player Details</h1>
+    <form id="updatePlayerForm">
+      <label for="playerId">Select Player:</label>
+      <select id="playerId" name="playerId" required>
+        <option value="Select">Select</option></select
+      ><br /><br />
+
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required /><br /><br />
+
+      <label for="role">Role:</label>
+      <input type="text" id="role" name="role" required /><br /><br />
+
+      <label for="dob">Date of Birth:</label>
+      <input type="date" id="dob" name="dob" required /><br /><br />
+
+      <label for="runsScored">Runs Scored:</label>
+      <input
+        type="text"
+        id="runsScored"
+        name="runsScored"
+        required
+      /><br /><br />
+      <label for="wicketsTaken">Wickets Taken:</label>
+      <input
+        type="text"
+        id="wicketsTaken"
+        name="wicketsTaken"
+        required
+      /><br /><br />
+
+      <label for="balls">Balls Faced:</label>
+      <input
+        type="text"
+        id="ballsFaced"
+        name="ballsFaced"
+        required
+      /><br /><br />
+
+      <button type="submit">Update Player Details</button>
+    </form>
+
+    <script>
+      function formatDate(dateString) {
+        var date = new Date(dateString);
+        var year = date.getFullYear();
+        var month = (date.getMonth() + 1).toString().padStart(2, "0"); // Month starts from 0
+        var day = date.getDate().toString().padStart(2, "0");
+
+        return year + "-" + month + "-" + day;
+      }
+      // Fetch players from the server and populate the dropdown list
+      async function fetchPlayers() {
+        try {
+          const response = await fetch("/players");
+          if (!response.ok) {
+            throw new Error("Failed to fetch players");
+          }
+          const players = await response.json();
+          const playerDropdown = document.getElementById("playerId");
+          players.forEach((player) => {
+            const option = document.createElement("option");
+            option.value = player._id;
+            option.textContent = player.name;
+            playerDropdown.appendChild(option);
+          });
+        } catch (error) {
+          console.error("Error:", error);
+          alert("Failed to fetch players");
+        }
+      }
+
+      // Call fetchPlayers function when the page loads
+      window.onload = fetchPlayers;
+
+      // Fetch player details when player is selected
+      document
+        .getElementById("playerId")
+        .addEventListener("change", async function (event) {
+          const playerId = event.target.value;
+          try {
+            const response = await fetch(`/players/${playerId}`);
+            if (!response.ok) {
+              throw new Error("Failed to fetch player details");
+            }
+            const player = await response.json();
+
+            document.getElementById("name").value = player.name;
+            document.getElementById("role").value = player.role;
+            document.getElementById("dob").value = formatDate(player.dob);
+            console.log(formatDate(player.dob));
+            document.getElementById("runsScored").value =
+              player.runsScored.join(",");
+            document.getElementById("ballsFaced").value =
+              player.ballsFaced.join(",");
+            document.getElementById("wicketsTaken").value =
+              player.wicketsTaken.join(",");
+          } catch (error) {
+            console.error("Error:", error);
+            alert("Failed to fetch player details");
+          }
+        });
+
+      // Update player details when form is submitted
+      document
+        .getElementById("updatePlayerForm")
+        .addEventListener("submit", async function (event) {
+          event.preventDefault();
+
+          const formData = new FormData(this);
+
+          const formDataJSON = Object.fromEntries(formData.entries());
+          const playerId = formDataJSON.playerId;
+
+          try {
+            const response = await fetch(`/players/${playerId}`, {
+              method: "PUT",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(formDataJSON),
+            });
+
+            if (!response.ok) {
+              throw new Error("Failed to update player details");
+            }
+
+            alert("Player details updated successfully");
+
+            // You can redirect to another page or perform other actions after updating the player details
+          } catch (error) {
+            console.error("Error:", error);
+            alert("Failed to update player details");
+          }
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  </body>
+</html>
