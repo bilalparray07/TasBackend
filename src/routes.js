@@ -14,5 +14,8 @@ router.get("/players/:id", playerController.getPlayerById);
 
 // Route to get all players
 router.get("/players", playerController.getAllPlayers);
+router.get("/", (req, res) => {
+  res.send("Hello From Backend of TAS");
+});
 
 module.exports = router;
