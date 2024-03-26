@@ -4,7 +4,8 @@ const Player = require("../models/playerModel");
 // Add a new player
 exports.addPlayer = async (req, res) => {
   try {
-    const { name, role, dob, runsScored, ballsFaced, wicketsTaken } = req.body;
+    const { name, role, dob, runsScored, ballsFaced, wicketsTaken, lastFour } =
+      req.body;
     const player = new Player({
       name,
       role,
@@ -12,6 +13,7 @@ exports.addPlayer = async (req, res) => {
       runsScored,
       wicketsTaken,
       ballsFaced,
+      lastFour,
     });
     await player.save();
     res.status(201).json({ message: "Player added successfully", player });
@@ -25,7 +27,8 @@ exports.addPlayer = async (req, res) => {
 exports.updatePlayer = async (req, res) => {
   try {
     const { id } = req.params;
-    const { name, role, dob, runsScored, ballsFaced, wicketsTaken } = req.body;
+    const { name, role, dob, runsScored, ballsFaced, wicketsTaken, lastFour } =
+      req.body;
 
     // Convert 'runsScored' and 'wicketsTaken' to arrays if they're not already
     // const runsScoredArray = runsScored.split(",");
@@ -41,6 +44,7 @@ exports.updatePlayer = async (req, res) => {
         runsScored,
         ballsFaced,
         wicketsTaken,
+        lastFour,
       },
       { new: true }
     );

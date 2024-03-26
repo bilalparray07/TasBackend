@@ -8,6 +8,7 @@ const playerSchema = new mongoose.Schema({
   runsScored: [{ type: String }],
   ballsFaced: [{ type: String }],
   wicketsTaken: [{ type: String }],
+  lastFour: [{ type: String }],
 });
 
 const Player = mongoose.model("Player", playerSchema);

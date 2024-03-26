@@ -102,6 +102,16 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.10.7/dist/sweetalert2.min.css
                 required
               />
             </div>
+            <div class="form-group">
+              <label for="lastFour">Last Four:</label>
+              <input
+                type="text"
+                class="form-control"
+                id="lastFour"
+                name="lastFour"
+                required
+              />
+            </div>
 
             <button type="submit" class="btn btn-success">
               Update Player Details
@@ -159,13 +169,16 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.10.7/dist/sweetalert2.min.css
             document.getElementById("name").value = player.name;
             document.getElementById("role").value = player.role;
             document.getElementById("dob").value = formatDate(player.dob);
-            console.log(formatDate(player.dob));
             document.getElementById("runsScored").value =
               player.runsScored.join(",");
             document.getElementById("ballsFaced").value =
               player.ballsFaced.join(",");
             document.getElementById("wicketsTaken").value =
               player.wicketsTaken.join(",");
+            document.getElementById("lastFour").value =
+              player.lastFour.join(",");
+            // let numbers = player.runsScored[0].split(",");
+            // console.log(numbers.map((e) => parseInt(e, 10)));///to convert string array into number
           } catch (error) {
             console.error("Error:", error);
             alert("Failed to fetch player details");
@@ -194,7 +207,7 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.10.7/dist/sweetalert2.min.css
             swalWithBootstrapButtons
               .fire({
                 title: "Are you sure?",
-                text: `Name: ${formDataJSON.name}  Runs: ${formDataJSON.runsScored} Wickets: ${formDataJSON.wicketsTaken} Balls: ${formDataJSON.ballsFaced}`,
+                text: `Name: ${formDataJSON.name}  Runs: ${formDataJSON.runsScored} Wickets: ${formDataJSON.wicketsTaken} Balls: ${formDataJSON.ballsFaced} Last Four: ${formDataJSON.lastFour}`,
                 icon: "warning",
                 showCancelButton: true,
                 confirmButtonText: "Yes, Add it!",
