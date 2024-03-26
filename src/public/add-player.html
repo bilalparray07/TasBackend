@@ -17,30 +17,82 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.10.7/dist/sweetalert2.min.css
       integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="add-player.css" />
   </head>
   <body>
-    <h1>Add Player</h1>
-    <form id="addPlayerForm">
-      <label for="name">Name:</label>
-      <input type="text" id="name" name="name" required /><br /><br />
+    <div class="container-fluid">
+      <div class="row mx-auto">
+        <div class="col-12">
+          <h1 class="text-center">Add Player</h1>
+          <form id="addPlayerForm">
+            <div class="form-group">
+              <label for="name">Name:</label>
+              <input
+                type="text"
+                class="form-control"
+                id="name"
+                name="name"
+                required
+              />
+            </div>
 
-      <label for="role">Role:</label>
-      <input type="text" id="role" name="role" required /><br /><br />
+            <div class="form-group">
+              <label for="role">Role:</label>
+              <input
+                type="text"
+                class="form-control"
+                id="role"
+                name="role"
+                required
+              />
+            </div>
 
-      <label for="dob">Date of Birth:</label>
-      <input type="date" id="dob" name="dob" required /><br /><br />
+            <div class="form-group">
+              <label for="dob">Date of Birth:</label>
+              <input
+                type="date"
+                class="form-control"
+                id="dob"
+                name="dob"
+                required
+              />
+            </div>
 
-      <label for="runsScored">Runs Scored:</label>
-      <input type="text" id="runsScored" name="runsScored" /><br /><br />
+            <div class="form-group">
+              <label for="runsScored">Runs Scored:</label>
+              <input
+                type="text"
+                class="form-control"
+                id="runsScored"
+                name="runsScored"
+              />
+            </div>
 
-      <label for="ballsFaced">ballsFaced :</label>
-      <input type="text" id="ballsFaced" name="ballsFaced" /><br /><br />
+            <div class="form-group">
+              <label for="ballsFaced">Balls Faced:</label>
+              <input
+                type="text"
+                class="form-control"
+                id="ballsFaced"
+                name="ballsFaced"
+              />
+            </div>
 
-      <label for="wicketsTaken">wicketsTaken :</label>
-      <input type="text" id="wicketsTaken" name="wicketsTaken" /><br /><br />
+            <div class="form-group">
+              <label for="wicketsTaken">Wickets Taken:</label>
+              <input
+                type="text"
+                class="form-control"
+                id="wicketsTaken"
+                name="wicketsTaken"
+              />
+            </div>
 
-      <button type="submit" class="btn btn-success">Add Player</button>
-    </form>
+            <button type="submit" class="btn btn-success">Add Player</button>
+          </form>
+        </div>
+      </div>
+    </div>
 
     <script>
       document

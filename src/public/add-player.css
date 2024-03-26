@@ -1,0 +1,11 @@
+.container-fluid {
+  width: 50vw;
+}
+.form-group {
+  margin: 20px 0;
+}
+@media screen and (max-width: 430px) {
+  .container-fluid {
+    width: 95vw;
+  }
+}

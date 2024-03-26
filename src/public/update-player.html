@@ -17,51 +17,99 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.10.7/dist/sweetalert2.min.css
       integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="update-player.css" />
   </head>
   <body>
-    <h1>Update Player Details</h1>
-    <form id="updatePlayerForm">
-      <label for="playerId">Select Player:</label>
-      <select id="playerId" name="playerId" required>
-        <option value="Select">Select</option></select
-      ><br /><br />
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <h1>Update Player Details</h1>
+          <form id="updatePlayerForm">
+            <div class="form-group">
+              <label for="playerId">Select Player:</label>
+              <select
+                class="form-control"
+                id="playerId"
+                name="playerId"
+                required
+              >
+                <option value="Select">Select</option>
+              </select>
+            </div>
 
-      <label for="name">Name:</label>
-      <input type="text" id="name" name="name" required /><br /><br />
+            <div class="form-group">
+              <label for="name">Name:</label>
+              <input
+                type="text"
+                class="form-control"
+                id="name"
+                name="name"
+                required
+              />
+            </div>
 
-      <label for="role">Role:</label>
-      <input type="text" id="role" name="role" required /><br /><br />
+            <div class="form-group">
+              <label for="role">Role:</label>
+              <input
+                type="text"
+                class="form-control"
+                id="role"
+                name="role"
+                required
+              />
+            </div>
 
-      <label for="dob">Date of Birth:</label>
-      <input type="date" id="dob" name="dob" required /><br /><br />
+            <div class="form-group">
+              <label for="dob">Date of Birth:</label>
+              <input
+                type="date"
+                class="form-control"
+                id="dob"
+                name="dob"
+                required
+              />
+            </div>
 
-      <label for="runsScored">Runs Scored:</label>
-      <input
-        type="text"
-        id="runsScored"
-        name="runsScored"
-        required
-      /><br /><br />
-      <label for="wicketsTaken">Wickets Taken:</label>
-      <input
-        type="text"
-        id="wicketsTaken"
-        name="wicketsTaken"
-        required
-      /><br /><br />
+            <div class="form-group">
+              <label for="runsScored">Runs Scored:</label>
+              <input
+                type="text"
+                class="form-control"
+                id="runsScored"
+                name="runsScored"
+                required
+              />
+            </div>
 
-      <label for="balls">Balls Faced:</label>
-      <input
-        type="text"
-        id="ballsFaced"
-        name="ballsFaced"
-        required
-      /><br /><br />
+            <div class="form-group">
+              <label for="wicketsTaken">Wickets Taken:</label>
+              <input
+                type="text"
+                class="form-control"
+                id="wicketsTaken"
+                name="wicketsTaken"
+                required
+              />
+            </div>
 
-      <button type="submit" class="btn btn-success">
-        Update Player Details
-      </button>
-    </form>
+            <div class="form-group">
+              <label for="balls">Balls Faced:</label>
+              <input
+                type="text"
+                class="form-control"
+                id="ballsFaced"
+                name="ballsFaced"
+                required
+              />
+            </div>
+
+            <button type="submit" class="btn btn-success">
+              Update Player Details
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
 
     <script>
       function formatDate(dateString) {
