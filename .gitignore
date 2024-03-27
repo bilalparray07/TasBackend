@@ -53,3 +53,4 @@ Thumbs.db
 / .angular
 .angular
 /package-lock.json
+.vercel
