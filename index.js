@@ -11,6 +11,7 @@ const MONGODB_URI =
 
 mongoose.connect(MONGODB_URI);
 app.use(cors());
+app.options("*", cors());
 app.use(bodyParser.json());
 // Serve static files from the public directory
 app.use(express.static("src/public"));
