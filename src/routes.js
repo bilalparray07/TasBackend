@@ -15,6 +15,7 @@ router.get("/players/:id", playerController.getPlayerById);
 // Route to get all players
 router.get("/players", playerController.getAllPlayers);
 router.get("/", (req, res) => {
+  res.setHeader("Access-Control-Allow-Origin", "http://localhost:4200");
   res.send("Hello From Backend of TAS");
 });
 
