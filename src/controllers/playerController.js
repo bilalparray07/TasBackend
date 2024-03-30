@@ -66,7 +66,7 @@ exports.getPlayerById = async (req, res) => {
     if (!player) {
       return res.status(404).json({ message: "Player not found" });
     }
-    res.setHeader("Access-Control-Allow-Origin", "http://localhost:4200");
+    // res.setHeader("Access-Control-Allow-Origin", "http://localhost:4200");
     res.status(200).json(player);
   } catch (error) {
     console.error("Error:", error);
@@ -78,7 +78,7 @@ exports.getPlayerById = async (req, res) => {
 exports.getAllPlayers = async (req, res) => {
   try {
     const players = await Player.find();
-    res.setHeader("Access-Control-Allow-Origin", "http://localhost:4200");
+    // res.setHeader("Access-Control-Allow-Origin", "http://localhost:4200");
     res.status(200).json(players);
   } catch (error) {
     console.error("Error:", error);

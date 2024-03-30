@@ -10,8 +10,12 @@ const MONGODB_URI =
   "mongodb+srv://sorieasal:sorieasal@nodejs.3k8ji4v.mongodb.net/";
 
 mongoose.connect(MONGODB_URI);
-app.use(cors());
-app.options("*", cors());
+app.use(
+  cors({
+    origin: "http://localhost:4200",
+  })
+);
+
 app.use(bodyParser.json());
 // Serve static files from the public directory
 app.use(express.static("src/public"));
